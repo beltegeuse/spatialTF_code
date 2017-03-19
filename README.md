@@ -18,7 +18,7 @@ This code is a modified version of Mitsuba rendering original code. Compare to i
   
  "Improved Stochastic Progressive Photon Mapping with Metropolis Sampling" by J. Chen et al. It is a Custom TF for photon tracing that modulate the visibility by a precomputed inverse density.
  
- "Photon Shooting with Programmable Scalar Contribution Function" by Q. Zeng and C. Zeng. It is another TF for photon tracing. Note that the implementation is not entirely functional.
+ "Visual importance-based adaptive photon tracing" by Q. Zeng and C. Zeng. It is another TF for photon tracing. Note that the implementation is not entirely functional.
  
 ## Code organisation ##
 
