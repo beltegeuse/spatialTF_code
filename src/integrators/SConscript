@@ -1,0 +1,62 @@
+Import('env', 'sys', 'plugins')
+
+plugins += env.SharedLibrary('ao', ['direct/ao.cpp'])
+plugins += env.SharedLibrary('direct', ['direct/direct.cpp'])
+plugins += env.SharedLibrary('path', ['path/path.cpp'])
+plugins += env.SharedLibrary('volpath', ['path/volpath.cpp'])
+plugins += env.SharedLibrary('volpath_simple', ['path/volpath_simple.cpp'])
+plugins += env.SharedLibrary('ptracer', ['ptracer/ptracer.cpp', 'ptracer/ptracer_proc.cpp'])
+
+# Photon mapping-based techniques
+plugins += env.SharedLibrary('photonmapper', ['photonmapper/photonmapper.cpp', 'photonmapper/bre.cpp'])
+plugins += env.SharedLibrary('ppm', ['photonmapper/ppm.cpp'])
+plugins += env.SharedLibrary('sppm', ['photonmapper/sppm.cpp'])
+#plugins += env.SharedLibrary('apa', ['photonmapper/apa/apa.cpp'])
+
+# Miscellaneous
+plugins += env.SharedLibrary('avg', ['avg.cpp'])
+plugins += env.SharedLibrary('vpl', ['vpl/vpl.cpp'])
+plugins += env.SharedLibrary('adaptive', ['misc/adaptive.cpp'])
+plugins += env.SharedLibrary('irrcache', ['misc/irrcache.cpp', 'misc/irrcache_proc.cpp'])
+plugins += env.SharedLibrary('multichannel', ['misc/multichannel.cpp'])
+plugins += env.SharedLibrary('field', ['misc/field.cpp'])
+plugins += env.SharedLibrary('motion', ['misc/motion.cpp'])
+
+# Bidirectional techniques
+bidirEnv = env.Clone()
+bidirEnv.Append(LIBS=['mitsuba-bidir'])
+bidirEnv.Append(LIBPATH=['#src/libbidir'])
+
+plugins += bidirEnv.SharedLibrary('bdpt',
+	['bdpt/bdpt.cpp', 'bdpt/bdpt_wr.cpp', 'bdpt/bdpt_proc.cpp'])
+
+plugins += bidirEnv.SharedLibrary('pssmlt',
+	['pssmlt/pssmlt.cpp', 'pssmlt/pssmlt_sampler.cpp',
+    	 'pssmlt/pssmlt_proc.cpp']);
+    
+plugins += bidirEnv.SharedLibrary('mlt',
+	['mlt/mlt.cpp', 'mlt/mlt_proc.cpp']
+)
+
+plugins += bidirEnv.SharedLibrary('erpt',
+	['erpt/erpt.cpp', 'erpt/erpt_proc.cpp']
+)
+
+plugins += bidirEnv.SharedLibrary('msppm',
+	['photonmapper/msppm/msppm.cpp', 'photonmapper/msppm/splatting.cpp',
+   'photonmapper/msppm/imp/isppm/isppm_scalarFunction_proc.cpp', 
+   'photonmapper/msppm/imp/importanceFunc.cpp', 
+   'photonmapper/msppm/msppm_proc.cpp',
+   'photonmapper/msppm/msppm_sampler.cpp',
+   'photonmapper/msppm/msppm_path.cpp' ]
+)
+
+plugins += bidirEnv.SharedLibrary('sppm_splat',
+	['photonmapper/sppm_splat/sppm_splat.cpp', 'photonmapper/sppm_splat/splatting.cpp',
+   'photonmapper/sppm_splat/sppm_wr.cpp', 
+   'photonmapper/sppm_splat/sppm_proc.cpp']
+)
+
+# frvsense integrators
+
+Export('plugins')
