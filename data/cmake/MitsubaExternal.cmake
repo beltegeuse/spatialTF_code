@@ -69,7 +69,7 @@ find_package(Threads REQUIRED)
 
 ###########################################################################
 # Boost 
-find_package(Boost 1.63 REQUIRED COMPONENTS "filesystem" "system" "thread")
+find_package(Boost 1.58 REQUIRED COMPONENTS "filesystem" "system" "thread")
 # As of CMake 2.8.2, FindBoost doesn't honor the "REQUIRED" flag
 if (NOT Boost_FOUND)
   set(BOOST_ROOT "" CACHE PATH
