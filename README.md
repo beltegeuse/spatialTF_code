@@ -4,7 +4,7 @@ This code extends Mitsuba and implements the algorithm presented in the paper "A
 The algorithm proposed in this article is based on Stochastic Progressive Photon Mapping (SPPM) with a particular Target Function (TF). This TF is used in Metropolis sampling to distribute the light samples over the image plane to minimize relative error.
 
 Project home page:
-https://beltegeuse.github.io/research/publication/2016_spatialIF/
+https://profs.etsmtl.ca/agruson/publication/2016_spatialif/
 
 In the case of problems/questions/comments don't hesitate to contact us directly:
 adrien.gruson@gmail.com
@@ -25,7 +25,7 @@ This code is a modified version of Mitsuba rendering original code. Compare to i
 The primary integrator used in this project is "msppm." This integrator is a "flexible" Metropolis version of SPPM where the TF can be changed easily.
 
 Note that the number of photon shot per iteration (when gather points are regenerated) has to be big enough in case of dynamic TF to ensure a correct normalization factor (only in a really difficult scene). Please see scenes example at the following address:
-https://dl.dropboxusercontent.com/u/37606091/research/2016_SpatialTF/comparison/index.html
+https://data.adrien-gruson.com/research/2016_SpatialTF/comparison/index.html
 
 The code of "msppm" is a little bit complex due to our aim to add VCM implementation on top of it. However, this incorporation is not straightforward at all. Please check this new paper for more details:
 "Robust Light Transport Simulation via Metropolized Bidirectional Estimators" by M. Sik et al.
